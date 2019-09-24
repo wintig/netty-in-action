@@ -21,7 +21,7 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String>{
         channelGroup.forEach(ch -> {
             // 不是自己
             if (channel != ch) {
-                ch.writeAndFlush(channel.remoteAddress() + "发送的消息：" + msg);
+                ch.writeAndFlush(channel.remoteAddress() + "发送的消息：" + msg + "\n");
             } else {
                 ch.writeAndFlush("【自己】" + "发送的消息：" + msg + "\n");
             }
@@ -40,7 +40,7 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String>{
         Channel channel = ctx.channel();
 
         // 消息广播
-        channelGroup.writeAndFlush("【服务器】- " + channel.remoteAddress() + " 加入了聊天室");
+        channelGroup.writeAndFlush("【服务器】- " + channel.remoteAddress() + " 加入了聊天室" + "\n");
         channelGroup.add(channel);
     }
 
@@ -54,8 +54,8 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String>{
         Channel channel = ctx.channel();
 
         // 消息广播
-        channelGroup.writeAndFlush("【服务器】- " + channel.remoteAddress() + " 退出了聊天室");
-
+        channelGroup.writeAndFlush("【服务器】- " + channel.remoteAddress() + " 退出了聊天室" + "\n");
+        System.out.println(channelGroup.size());
         // 当连接断开的时候，这一行其实会自动调用
         // channelGroup.remove(channel);
     }
