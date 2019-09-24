@@ -25,6 +25,8 @@ public class NioTest11_Scattering与Gathering {
      * 那么这时候我们就可以直接用一个数组来进行接收，如果第一个数组读完了后，就接着读第二个数组
      * 这样的话，buffer里面的数据就更加专一。
      *
+     * test:
+     * nc localhost 8899
      *
      * @param args
      * @throws Exception
