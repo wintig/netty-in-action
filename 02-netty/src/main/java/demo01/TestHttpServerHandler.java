@@ -68,6 +68,11 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
         super.channelInactive(ctx);
     }
 
+    /**
+     * 当请求建立好了连接的时候。通常这时候我们可以把连接保存起来，以便下一次再进行处理
+     * @param ctx
+     * @throws Exception
+     */
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         System.out.println("handler Added");
